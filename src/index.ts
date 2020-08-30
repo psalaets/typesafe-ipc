@@ -1,3 +1,4 @@
+import * as events from 'events';
 import * as electron from 'electron';
 
 interface StrictChannelMap {
@@ -98,7 +99,7 @@ type RemoveAllListenersSignatures<
  */
 type StrictIpcModule<
   ChannelMap extends StrictChannelMap,
-  LooseModule extends electron.EventEmitter
+  LooseModule extends events.EventEmitter
 > = Omit<
   LooseModule,
   'on' | 'once' | 'removeAllListeners' | 'removeListener'
