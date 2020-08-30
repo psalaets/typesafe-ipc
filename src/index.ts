@@ -50,6 +50,19 @@ type SendToMethodSignatures<
 }>;
 
 /**
+ * Intersection of stricly-typed `sendToFrame` method signature
+ */
+type SendToFrameMethodSignatures<
+  ChannelMap extends StrictChannelMap
+> = IntersectMethodSignatures<{
+  [C in keyof ChannelMap]: (
+    ChannelMap[C] extends void ?
+    (frameId: number, channel: C) => void :
+    (frameId: number, channel: C, payload: ChannelMap[C]) => void
+  )
+}>;
+
+/**
  * Intersection of stricly-typed signatures for methods that register listeners
  *
  * Note: signature is the same for `on`, `once`, and `removeListener`
@@ -122,7 +135,8 @@ export type StrictIpcMain<
  */
 export type StrictWebContents<ChannelMap extends StrictChannelMap> = Omit<
   electron.WebContents,
-  'send'
+  'send' | 'sendToFrame'
 > & {
   send: SendMethodSignatures<ChannelMap>;
+  sendToFrame: SendToFrameMethodSignatures<ChannelMap>;
 };
