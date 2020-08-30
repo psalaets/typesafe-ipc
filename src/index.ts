@@ -115,3 +115,14 @@ export type StrictIpcRenderer<ChannelMap extends StrictChannelMap> = Omit<
 export type StrictIpcMain<
   ChannelMap extends StrictChannelMap
 > = StrictIpcModule<ChannelMap, electron.IpcMain>;
+
+/**
+ * Type definition used to override the IPC-related parts of WebContents with
+ * strict typing.
+ */
+export type StrictWebContents<ChannelMap extends StrictChannelMap> = Omit<
+  electron.WebContents,
+  'send'
+> & {
+  send: SendMethodSignatures<ChannelMap>;
+};
