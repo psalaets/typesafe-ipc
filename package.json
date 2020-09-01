@@ -1,13 +1,13 @@
 {
-  "name": "typesafe-ipc",
-  "author": "Kevin O'Rourke <orourke.kevin@gmail.com>",
+  "name": "@psalaets/typesafe-ipc",
+  "author": "Paul Salaets <psalaets@gmail.com>",
   "description": "Typesafe Electron IPC modules",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "typescript",
     "typesafe",

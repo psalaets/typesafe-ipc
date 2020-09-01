@@ -1,15 +1,15 @@
-# typesafe-ipc
+# @psalaets/typesafe-ipc
 
 A type-only library for adding strict type safety to Electron's IPC modules
 
-## Installation
+## Install
 
-```
-// NPM
-$ npm install typesafe-actions
+```sh
+# npm
+$ npm install @psalaets/typesafe-ipc -D
 
-// YARN
-$ yarn add typesafe-actions
+# yarn
+$ yarn add @psalaets/typesafe-ipc -D
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ The easiest way to accomplish this is to create a file (module) that defines the
 
 ```typescript
 import * as electron from 'electron';
-import { StrictIpcMain, StrictIpcRenderer } from 'typesafe-ipc';
+import { StrictIpcMain, StrictIpcRenderer } from '@psalaets/typesafe-ipc';
 
 interface IpcChannelMap {
   'no-payload': void;
@@ -69,6 +69,31 @@ interface IpcChannelMap {
     }
   };
 }
+```
+
+### Sending through webContents
+
+Electron provides a way to send ipc messages to a renderer process through the `webContents` of its `BrowserWindow`. `StrictWebContents` can be used to access `send()` with type checking.
+
+```typescript
+import * as electron from 'electron';
+import { StrictWebContents } from '@psalaets/typesafe-ipc';
+
+interface IpcChannelMap {
+  'no-payload': void;
+  'simple-payload': string;
+  'complex-payload': {
+    foo: string;
+    bar: {
+      baz: number;
+    }
+  };
+}
+
+const webContents: StrictWebContents<IpcChannelMap> = myBrowserWindow.webContents;
+
+// Only this method has the additional type checking
+webContents.send()
 ```
 
 ## Motivation & Philosophy
