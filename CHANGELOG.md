@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2020-08-31
+
+### Breaking Change
+
+- Peer dependency requires Electron version `>=5.0.0` (was: `^4.0.1`)
+
+### Added
+
+- Type support for `webContents.sendToFrame()` (Electron 5+)
+
 ## [1.1.0] - 2020-08-31
 
 ### Added

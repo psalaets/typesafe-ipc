@@ -73,7 +73,7 @@ interface IpcChannelMap {
 
 ### Sending through webContents
 
-Electron provides a way to send ipc messages to a renderer process through the `webContents` of its `BrowserWindow`. `StrictWebContents` can be used to access `send()` with type checking.
+Electron provides a way to send ipc messages to a renderer process through the `webContents` of its `BrowserWindow`. `StrictWebContents` can be used to access `send()` and `sendToFrame()` with type checking.
 
 ```typescript
 import * as electron from 'electron';
@@ -92,8 +92,9 @@ interface IpcChannelMap {
 
 const webContents: StrictWebContents<IpcChannelMap> = myBrowserWindow.webContents;
 
-// Only this method has the additional type checking
+// Only these methods have additional type checking
 webContents.send()
+webContents.sendToFrame()
 ```
 
 ## Motivation & Philosophy
