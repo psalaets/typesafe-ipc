@@ -5,10 +5,8 @@ A type-only library for adding strict type safety to Electron's IPC modules
 ## Install
 
 ```sh
-# npm
 $ npm install @psalaets/typesafe-ipc -D
 
-# yarn
 $ yarn add @psalaets/typesafe-ipc -D
 ```
 
