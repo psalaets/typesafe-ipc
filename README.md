@@ -101,7 +101,7 @@ Having worked on a few different electron projects I noticed that as the app gre
 
 Enter `typesafe-ipc`, which aims to provide a lightweight, *type-only* solution to this problem by providing strict typing to ipc module methods.
 
-## Version Compatability
+## Version Compatibility
 
 | electron | @psalaets/typesafe-ipc |
 |----------|------------------------|
