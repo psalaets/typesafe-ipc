@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0] - 2020-09-02
+
+### Breaking Changes
+
+- Peer dependency requires Electron version `>=6.0.0` (was: `>=5.0.0`)
+- Listeners passed to `on`, `once` and `removeListener` now accept `IpcRendererEvent` and `IpcMainEvent` for ipcRenderer and ipcMain respectively. These event types were added in Electron 6.
+
 ## [2.0.0] - 2020-08-31
 
 ### Breaking Change

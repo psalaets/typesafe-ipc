@@ -100,3 +100,11 @@ webContents.sendToFrame()
 Having worked on a few different electron projects I noticed that as the app grew, managing ipc messaging became increasingly complex. Without type safety, Electron's `ipcMain` and `ipcRenderer` modules allow developers to send messages to/from any channel name and with any payload type. As the app grows and inevitable refactors happen, the lack of type safety around both sending and receiving these messages becomes an annoyance at best and a liability at worst.
 
 Enter `typesafe-ipc`, which aims to provide a lightweight, *type-only* solution to this problem by providing strict typing to ipc module methods.
+
+## Version Compatability
+
+|Electron version|@psalaets/typesafe-ipc version|
+|----------------|------------------------------|
+| 4              | `1.1.0`                      |
+| 5              | `2.0.0`                      |
+| 6+             | `3.0.0`                      |

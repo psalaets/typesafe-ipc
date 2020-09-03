@@ -2,7 +2,7 @@
   "name": "@psalaets/typesafe-ipc",
   "author": "Paul Salaets <psalaets@gmail.com>",
   "description": "Typesafe Electron IPC modules",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
