@@ -103,8 +103,8 @@ Enter `typesafe-ipc`, which aims to provide a lightweight, *type-only* solution 
 
 ## Version Compatability
 
-|Electron version|@psalaets/typesafe-ipc version|
-|----------------|------------------------------|
-| 4              | `1.1.0`                      |
-| 5              | `2.0.0`                      |
-| 6+             | `3.0.0`                      |
+| electron | @psalaets/typesafe-ipc |
+|----------|------------------------|
+| 4        | 1.1.0                  |
+| 5        | 2.0.0                  |
+| 6+       | 3.0.0                  |
