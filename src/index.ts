@@ -68,13 +68,14 @@ type SendToFrameMethodSignatures<
  * Note: signature is the same for `on`, `once`, and `removeListener`
  */
 type ListenerRegistrarSignatures<
-  ChannelMap extends StrictChannelMap
+  ChannelMap extends StrictChannelMap,
+  Event extends electron.Event
 > = IntersectMethodSignatures<{
   [C in keyof ChannelMap]: (
     channel: C,
     listener: ChannelMap[C] extends void ?
-      (event: electron.Event) => void :
-      (event: electron.Event, payload: ChannelMap[C]) => void
+      (event: Event) => void :
+      (event: Event, payload: ChannelMap[C]) => void
   ) => void
 }>;
 
@@ -98,22 +99,25 @@ type RemoveAllListenersSignatures<
  */
 type StrictIpcModule<
   ChannelMap extends StrictChannelMap,
-  LooseModule extends electron.EventEmitter
+  LooseModule extends electron.EventEmitter,
+  Event extends electron.Event
 > = Omit<
   LooseModule,
   'on' | 'once' | 'removeAllListeners' | 'removeListener'
 > & {
-  on: ListenerRegistrarSignatures<ChannelMap>;
-  once: ListenerRegistrarSignatures<ChannelMap>;
+  on: ListenerRegistrarSignatures<ChannelMap, Event>;
+  once: ListenerRegistrarSignatures<ChannelMap, Event>;
   removeAllListeners: RemoveAllListenersSignatures<ChannelMap>;
-  removeListener: ListenerRegistrarSignatures<ChannelMap>;
+  removeListener: ListenerRegistrarSignatures<ChannelMap, Event>;
 };
 
 /**
  * Type definition used to override default IpcRenderer with strict typing
  */
-export type StrictIpcRenderer<ChannelMap extends StrictChannelMap> = Omit<
-  StrictIpcModule<ChannelMap, electron.IpcRenderer>,
+export type StrictIpcRenderer<
+  ChannelMap extends StrictChannelMap
+> = Omit<
+  StrictIpcModule<ChannelMap, electron.IpcRenderer, electron.IpcRendererEvent>,
   'send' | 'sendSync' | 'sendTo' | 'sendToHost'
 > & {
   send: SendMethodSignatures<ChannelMap>;
@@ -127,7 +131,7 @@ export type StrictIpcRenderer<ChannelMap extends StrictChannelMap> = Omit<
  */
 export type StrictIpcMain<
   ChannelMap extends StrictChannelMap
-> = StrictIpcModule<ChannelMap, electron.IpcMain>;
+> = StrictIpcModule<ChannelMap, electron.IpcMain, electron.IpcMainEvent>;
 
 /**
  * Type definition used to override the IPC-related parts of WebContents with
